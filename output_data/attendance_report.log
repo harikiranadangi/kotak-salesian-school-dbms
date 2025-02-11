@@ -4,3 +4,5 @@
 
 2025-02-09 20:57:23,327 - ERROR - \u274c Unexpected error: [Errno 2] No such file or directory: 'D:\\GITHUB\\kotak-school-dbms\\output_data\\fees_report_2024-25.csv'
 
+2025-02-10 18:09:59,654 - ERROR - \u274c Unexpected error: [Errno 22] Invalid argument: 'D:\\GITHUB\\kotak-school-dbms\\output_data\\attendance_report_2024_25.csv'
+
