@@ -1,0 +1,239 @@
+2025-02-12 18:17:47,764 - ERROR - \u274c Unexpected error: 'classId'
+
+2025-02-12 18:59:48,082 - ERROR - \u274c Unexpected error: 'classId'
+
+2025-02-12 19:02:14,323 - ERROR - \u274c Unexpected error: 'classId'
+
+2025-02-12 19:03:26,871 - ERROR - \u274c Database update failed: (pymysql.err.OperationalError) (1054, "Unknown column 'Date' in 'field list'")
+[SQL: INSERT INTO fees_collection_2024_25 (`Date`, `AdmissionNo`, `ClassNo`, `classId`, `branchId`, `AttendanceStatusId`) VALUES (%(Date)s, %(AdmissionNo)s, %(ClassNo)s, %(classId)s, %(branchId)s, %(AttendanceStatusId)s)]
+[parameters: [{'Date': datetime.datetime(2025, 2, 12, 0, 0), 'AdmissionNo': '17164', 'ClassNo': 2, 'classId': 2, 'branchId': 1, 'AttendanceStatusId': 2}, {'Date': datetime.datetime(2025, 2, 12, 0, 0), 'AdmissionNo': '15047', 'ClassNo': 29, 'classId': 9, 'branchId': 3, 'AttendanceStatusId': 1}, {'Date': datetime.datetime(2025, 2, 12, 0, 0), 'AdmissionNo': '14210', 'ClassNo': 39, 'classId': 12, 'branchId': 3, 'AttendanceStatusId': 2}, {'Date': datetime.datetime(2025, 2, 12, 0, 0), 'AdmissionNo': '14708', 'ClassNo': 40, 'classId': 12, 'branchId': 3, 'AttendanceStatusId': 2}, {'Date': datetime.datetime(2025, 2, 12, 0, 0), 'AdmissionNo': '16790', 'ClassNo': 5, 'classId': 3, 'branchId': 1, 'AttendanceStatusId': 2}, {'Date': datetime.datetime(2025, 2, 12, 0, 0), 'AdmissionNo': '17090', 'ClassNo': 9, 'classId': 4, 'branchId': 2, 'AttendanceStatusId': 2}, {'Date': datetime.datetime(2025, 2, 12, 0, 0), 'AdmissionNo': '13897', 'ClassNo': 43, 'classId': 13, 'branchId': 3, 'AttendanceStatusId': 1}, {'Date': datetime.datetime(2025, 2, 12, 0, 0), 'AdmissionNo': '15602', 'ClassNo': 25, 'classId': 8, 'branchId': 2, 'AttendanceStatusId': 2}  ... displaying 10 of 1000 total bound parameter sets ...  {'Date': datetime.datetime(2025, 2, 12, 0, 0), 'AdmissionNo': '16926', 'ClassNo': 3, 'classId': 2, 'branchId': 1, 'AttendanceStatusId': 2}, {'Date': datetime.datetime(2025, 2, 12, 0, 0), 'AdmissionNo': '15015', 'ClassNo': 40, 'classId': 12, 'branchId': 3, 'AttendanceStatusId': 2}]]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-02-12 19:03:26,877 - ERROR - \u274c Failed Data Sample (first 5 rows): 
+           Date AdmissionNo  ClassNo  classId  branchId  AttendanceStatusId
+0    2025-02-12       17164        2        2         1                   2
+740  2025-02-12       15047       29        9         3                   1
+474  2025-02-12       14210       39       12         3                   2
+772  2025-02-12       14708       40       12         3                   2
+1035 2025-02-12       16790        5        3         1                   2
+2025-02-12 19:03:26,877 - ERROR - Total Rows in DataFrame: 235592
+2025-02-12 19:03:26,877 - ERROR - MySQL Connection Information:
+2025-02-12 19:03:26,877 - ERROR - Host: localhost
+2025-02-12 19:03:26,877 - ERROR - Database: schooldb
+2025-02-12 19:03:26,877 - ERROR - Port: 3306
+2025-02-12 19:03:26,877 - ERROR - Error Traceback:
+2025-02-12 19:03:26,920 - ERROR - Traceback (most recent call last):
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1936, in _exec_single_context
+    self.dialect.do_executemany(
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\dialects\mysql\mysqldb.py", line 170, in do_executemany
+    rowcount = cursor.executemany(statement, parameters)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\cursors.py", line 182, in executemany
+    return self._do_execute_many(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\cursors.py", line 220, in _do_execute_many
+    rows += self.execute(sql + postfix)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 825, in _read_query_result
+    result.read()
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'Date' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\harik\AppData\Local\Temp\ipykernel_7916\3447112352.py", line 16, in update_database
+    df.to_sql(name=TABLE_NAME, con=engine, if_exists='append', index=False, chunksize=1000)  # Chunks of 1000 rows
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\util\_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\generic.py", line 3087, in to_sql
+    return sql.to_sql(
+           ^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\io\sql.py", line 842, in to_sql
+    return pandas_sql.to_sql(
+           ^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\io\sql.py", line 2018, in to_sql
+    total_inserted = sql_engine.insert_records(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\io\sql.py", line 1567, in insert_records
+    raise err
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\io\sql.py", line 1558, in insert_records
+    return table.insert(chunksize=chunksize, method=method)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\io\sql.py", line 1119, in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\io\sql.py", line 1010, in _execute_insert
+    result = conn.execute(self.table.insert(), data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\sql\elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1936, in _exec_single_context
+    self.dialect.do_executemany(
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\dialects\mysql\mysqldb.py", line 170, in do_executemany
+    rowcount = cursor.executemany(statement, parameters)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\cursors.py", line 182, in executemany
+    return self._do_execute_many(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\cursors.py", line 220, in _do_execute_many
+    rows += self.execute(sql + postfix)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 825, in _read_query_result
+    result.read()
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1054, "Unknown column 'Date' in 'field list'")
+[SQL: INSERT INTO fees_collection_2024_25 (`Date`, `AdmissionNo`, `ClassNo`, `classId`, `branchId`, `AttendanceStatusId`) VALUES (%(Date)s, %(AdmissionNo)s, %(ClassNo)s, %(classId)s, %(branchId)s, %(AttendanceStatusId)s)]
+[parameters: [{'Date': datetime.datetime(2025, 2, 12, 0, 0), 'AdmissionNo': '17164', 'ClassNo': 2, 'classId': 2, 'branchId': 1, 'AttendanceStatusId': 2}, {'Date': datetime.datetime(2025, 2, 12, 0, 0), 'AdmissionNo': '15047', 'ClassNo': 29, 'classId': 9, 'branchId': 3, 'AttendanceStatusId': 1}, {'Date': datetime.datetime(2025, 2, 12, 0, 0), 'AdmissionNo': '14210', 'ClassNo': 39, 'classId': 12, 'branchId': 3, 'AttendanceStatusId': 2}, {'Date': datetime.datetime(2025, 2, 12, 0, 0), 'AdmissionNo': '14708', 'ClassNo': 40, 'classId': 12, 'branchId': 3, 'AttendanceStatusId': 2}, {'Date': datetime.datetime(2025, 2, 12, 0, 0), 'AdmissionNo': '16790', 'ClassNo': 5, 'classId': 3, 'branchId': 1, 'AttendanceStatusId': 2}, {'Date': datetime.datetime(2025, 2, 12, 0, 0), 'AdmissionNo': '17090', 'ClassNo': 9, 'classId': 4, 'branchId': 2, 'AttendanceStatusId': 2}, {'Date': datetime.datetime(2025, 2, 12, 0, 0), 'AdmissionNo': '13897', 'ClassNo': 43, 'classId': 13, 'branchId': 3, 'AttendanceStatusId': 1}, {'Date': datetime.datetime(2025, 2, 12, 0, 0), 'AdmissionNo': '15602', 'ClassNo': 25, 'classId': 8, 'branchId': 2, 'AttendanceStatusId': 2}  ... displaying 10 of 1000 total bound parameter sets ...  {'Date': datetime.datetime(2025, 2, 12, 0, 0), 'AdmissionNo': '16926', 'ClassNo': 3, 'classId': 2, 'branchId': 1, 'AttendanceStatusId': 2}, {'Date': datetime.datetime(2025, 2, 12, 0, 0), 'AdmissionNo': '15015', 'ClassNo': 40, 'classId': 12, 'branchId': 3, 'AttendanceStatusId': 2}]]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+2025-02-12 19:04:46,920 - ERROR - \u274c An error occurred: (pymysql.err.OperationalError) (1054, "Unknown column 'classId' in 'field list'")
+[SQL: INSERT INTO class_table_2024_25 (`classId`, `className`) VALUES (%(classId_m0)s, %(className_m0)s), (%(classId_m1)s, %(className_m1)s), (%(classId_m2)s, %(className_m2)s), (%(classId_m3)s, %(className_m3)s), (%(classId_m4)s, %(className_m4)s), (%(classId_m5)s, %(className_m5)s), (%(classId_m6)s, %(className_m6)s), (%(classId_m7)s, %(className_m7)s), (%(classId_m8)s, %(className_m8)s), (%(classId_m9)s, %(className_m9)s), (%(classId_m10)s, %(className_m10)s), (%(classId_m11)s, %(className_m11)s), (%(classId_m12)s, %(className_m12)s)]
+[parameters: {'classId_m0': 1, 'className_m0': 'Pre KG', 'classId_m1': 2, 'className_m1': 'LKG', 'classId_m2': 3, 'className_m2': 'UKG', 'classId_m3': 4, 'className_m3': 'I', 'classId_m4': 5, 'className_m4': 'II', 'classId_m5': 6, 'className_m5': 'III', 'classId_m6': 7, 'className_m6': 'IV', 'classId_m7': 8, 'className_m7': 'V', 'classId_m8': 9, 'className_m8': 'VI', 'classId_m9': 10, 'className_m9': 'VII', 'classId_m10': 11, 'className_m10': 'VIII', 'classId_m11': 12, 'className_m11': 'IX', 'classId_m12': 13, 'className_m12': 'X'}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-02-12 19:04:46,926 - ERROR - Error Traceback:
+Traceback (most recent call last):
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 825, in _read_query_result
+    result.read()
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'classId' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\harik\AppData\Local\Temp\ipykernel_7916\2037109242.py", line 23, in update_database
+    df.to_sql(name=TABLE_NAME, con=engine, if_exists='append', index=False, chunksize=1000, method='multi')
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\util\_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\generic.py", line 3087, in to_sql
+    return sql.to_sql(
+           ^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\io\sql.py", line 842, in to_sql
+    return pandas_sql.to_sql(
+           ^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\io\sql.py", line 2018, in to_sql
+    total_inserted = sql_engine.insert_records(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\io\sql.py", line 1567, in insert_records
+    raise err
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\io\sql.py", line 1558, in insert_records
+    return table.insert(chunksize=chunksize, method=method)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\io\sql.py", line 1119, in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\io\sql.py", line 1027, in _execute_insert_multi
+    result = conn.execute(stmt)
+             ^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\sql\elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 825, in _read_query_result
+    result.read()
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1054, "Unknown column 'classId' in 'field list'")
+[SQL: INSERT INTO class_table_2024_25 (`classId`, `className`) VALUES (%(classId_m0)s, %(className_m0)s), (%(classId_m1)s, %(className_m1)s), (%(classId_m2)s, %(className_m2)s), (%(classId_m3)s, %(className_m3)s), (%(classId_m4)s, %(className_m4)s), (%(classId_m5)s, %(className_m5)s), (%(classId_m6)s, %(className_m6)s), (%(classId_m7)s, %(className_m7)s), (%(classId_m8)s, %(className_m8)s), (%(classId_m9)s, %(className_m9)s), (%(classId_m10)s, %(className_m10)s), (%(classId_m11)s, %(className_m11)s), (%(classId_m12)s, %(className_m12)s)]
+[parameters: {'classId_m0': 1, 'className_m0': 'Pre KG', 'classId_m1': 2, 'className_m1': 'LKG', 'classId_m2': 3, 'className_m2': 'UKG', 'classId_m3': 4, 'className_m3': 'I', 'classId_m4': 5, 'className_m4': 'II', 'classId_m5': 6, 'className_m5': 'III', 'classId_m6': 7, 'className_m6': 'IV', 'classId_m7': 8, 'className_m7': 'V', 'classId_m8': 9, 'className_m8': 'VI', 'classId_m9': 10, 'className_m9': 'VII', 'classId_m10': 11, 'className_m10': 'VIII', 'classId_m11': 12, 'className_m11': 'IX', 'classId_m12': 13, 'className_m12': 'X'}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
