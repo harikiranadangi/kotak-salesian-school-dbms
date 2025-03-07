@@ -237,3 +237,154 @@ sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1054, "Unknown 
 [parameters: {'classId_m0': 1, 'className_m0': 'Pre KG', 'classId_m1': 2, 'className_m1': 'LKG', 'classId_m2': 3, 'className_m2': 'UKG', 'classId_m3': 4, 'className_m3': 'I', 'classId_m4': 5, 'className_m4': 'II', 'classId_m5': 6, 'className_m5': 'III', 'classId_m6': 7, 'className_m6': 'IV', 'classId_m7': 8, 'className_m7': 'V', 'classId_m8': 9, 'className_m8': 'VI', 'classId_m9': 10, 'className_m9': 'VII', 'classId_m10': 11, 'className_m10': 'VIII', 'classId_m11': 12, 'className_m11': 'IX', 'classId_m12': 13, 'className_m12': 'X'}]
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
 
+2025-03-07 19:35:17,589 - ERROR - \u274c Unexpected error: name 'update_database' is not defined
+
+2025-03-07 19:35:46,944 - ERROR - Traceback (most recent call last):
+  File "C:\Users\harik\AppData\Local\Temp\ipykernel_18484\4238301731.py", line 22, in update_database
+    with engine.raw_connection() as conn:
+         ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '_ConnectionFairy' object does not support the context manager protocol
+
+2025-03-07 20:07:43,213 - ERROR - \u274c An error occurred: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query ([WinError 10054] An existing connection was forcibly closed by the remote host)')
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-03-07 20:07:43,219 - ERROR - Error Traceback:
+Traceback (most recent call last):
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 782, in _read_bytes
+    data = self._rfile.read(num_bytes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 720, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 3300, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\pool\base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\pool\base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\pool\base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\pool\impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\pool\base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\pool\base.py", line 674, in __init__
+    self.__connect()
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\pool\base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\pool\base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\default.py", line 620, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 361, in __init__
+    self.connect()
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 668, in connect
+    self._get_server_information()
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 1098, in _get_server_information
+    packet = self._read_packet()
+             ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 744, in _read_packet
+    packet_header = self._read_bytes(4)
+                    ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 788, in _read_bytes
+    raise err.OperationalError(
+pymysql.err.OperationalError: (2013, 'Lost connection to MySQL server during query ([WinError 10054] An existing connection was forcibly closed by the remote host)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\harik\AppData\Local\Temp\ipykernel_18484\4241774917.py", line 11, in update_database
+    with engine.begin() as conn:
+         ^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 3240, in begin
+    with self.connect() as conn:
+         ^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 3276, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 148, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 2440, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 3300, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\pool\base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\pool\base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\pool\base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\pool\impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\pool\base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\pool\base.py", line 674, in __init__
+    self.__connect()
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\pool\base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\pool\base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\default.py", line 620, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 361, in __init__
+    self.connect()
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 668, in connect
+    self._get_server_information()
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 1098, in _get_server_information
+    packet = self._read_packet()
+             ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 744, in _read_packet
+    packet_header = self._read_bytes(4)
+                    ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\harik\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymysql\connections.py", line 788, in _read_bytes
+    raise err.OperationalError(
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query ([WinError 10054] An existing connection was forcibly closed by the remote host)')
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
