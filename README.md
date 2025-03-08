@@ -31,19 +31,25 @@ The **Kotak DBMS Dashboard** is designed for managing student attendance, fee co
 
 ## Screenshots
 ### **1. Students by Payment Status**
-![Students by Payment Status](screenshots/students_payment_status.png)
+
+![image](https://github.com/user-attachments/assets/5b1c3d2b-02e0-49ab-8e84-a77cd6fcdf2d)
 
 ### **2. Amount Collected by Date**
-![Amount Collected](screenshots/amount_collected.png)
+
+![image](https://github.com/user-attachments/assets/140bc118-697e-4d7d-974e-df1018707ea4)
 
 ### **3. Attendance Report**
-![Attendance Report](screenshots/attendance_report.png)
+
+![image](https://github.com/user-attachments/assets/3130a865-daef-45b1-a677-bc66b06d54b4)
 
 ### **4. Fee Reports**
-![Fee Reports](screenshots/fee_reports.png)
+
+![image](https://github.com/user-attachments/assets/934f0674-d5eb-4ed3-9f69-1f084878a6dc)
 
 ### **5. Students Having Absents More Than 30**
-![Absentees](screenshots/students_absents.png)
+
+![image](https://github.com/user-attachments/assets/0ed2e07d-89ae-4de8-8c94-4b62b1082d9d)
+
 
 ## Future Enhancements
 - **Automated Fee Reminders**: Send alerts for pending fees.
