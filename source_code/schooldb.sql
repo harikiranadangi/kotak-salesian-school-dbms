@@ -143,7 +143,7 @@ DESCRIBE attendance_report;
 
 DESCRIBE students;
 
-DESCRIBE class_table;
+DESCRIBE class_table_2024_25;
 
 -- DROPPING TABLES
 
@@ -159,7 +159,7 @@ DROP TABLE class_table;
 
 SELECT * FROM students;
 
-SELECT * FROM class_table;
+SELECT * FROM class_table_2024_25;
 
 SELECT COUNT(*) FROM students;
 
