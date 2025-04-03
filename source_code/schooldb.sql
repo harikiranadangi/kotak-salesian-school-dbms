@@ -1,6 +1,33 @@
+CREATE DATABASE schooldb;
+
 USE schooldb;
 
-CREATE TABLE fees_table (
+CREATE TABLE students_2024_25 (
+    SNo INT ,
+    AdmissionNo VARCHAR(50) UNIQUE NOT NULL,
+    STUDENT_NAME VARCHAR(255) NOT NULL,
+    Class VARCHAR(50) NOT NULL,
+    Gender ENUM('Male', 'Female') NOT NULL,
+    MotherName VARCHAR(255),
+    FatherName VARCHAR(255),
+    PenNo VARCHAR(50),
+    DOB DATE NOT NULL,
+    Mobile VARCHAR(30) NOT NULL,
+    Religion VARCHAR(50),
+    Caste VARCHAR(50),
+    SubCaste VARCHAR(50),
+    IIndLang VARCHAR(50),
+    Remarks TEXT,
+    ClassNo INT NOT NULL,
+    JoinedYear YEAR 
+);
+
+DROP TABLE students_2024_25;
+
+SELECT * FROM students_2024_25 ORDER BY SNo;
+
+
+CREATE TABLE fees_table_2024_25 (
 	SNo INT,
     ADM_NO VARCHAR(10) PRIMARY KEY,
     STUDENT_NAME VARCHAR(100) NOT NULL,
@@ -15,37 +42,66 @@ CREATE TABLE fees_table (
     Discount_Concession INT DEFAULT 0,
     TotalFeeDue INT DEFAULT 0,
     Fine INT DEFAULT 0,
-    PaymentStatus VARCHAR(50),
+    PaymentStatusId INT,
     ClassNo INT
 );
 
+DROP TABLE fees_table_2024_25;
 
+SELECT * FROM fees_table_2024_25;
 
-CREATE TABLE attendance_report (
+CREATE TABLE daywise_fees_collection_2024_25 (
+    SNo INT ,
+    RecieptNo VARCHAR(50) UNIQUE NOT NULL,
+    Class VARCHAR(50) NOT NULL,
+    AdmissionNo VARCHAR(50) NOT NULL,
+    StudentName VARCHAR(255) NOT NULL,
     Date DATE NOT NULL,
-    AdmissionNo VARCHAR(20),
-    ClassNo INT,
-    gradeId INT,
-    branchId INT,
-    AttendanceStatusId VARCHAR(20)
+    ReceivedAmount DECIMAL(10,2) NOT NULL,
+    Remarks TEXT
+);
+
+
+SELECT * FROM daywise_fees_collection_2024_25;
+
+CREATE TABLE attendance_report_2024_25 (
+    SNo INT PRIMARY KEY AUTO_INCREMENT,
+    Date DATE NOT NULL,
+    AdmissionNo VARCHAR(50) NOT NULL,
+    ClassNo INT NOT NULL,
+    classId INT NOT NULL,
+    branchId INT NOT NULL,
+    AttendanceStatusId INT NOT NULL
 );
 
 ALTER TABLE attendance_report DROP INDEX `AdmissionNo`;
 ALTER TABLE attendance_report ADD UNIQUE (`Date`, `AdmissionNo`);
 
-CREATE TABLE attendance_report1 (
-    Date DATE NOT NULL,
-    AdmissionNo VARCHAR(20),
-    Name VARCHAR(100) NOT NULL,
-    Class VARCHAR(20),
-    ClassNo INT,
-    gradeId INT,
-    branchId INT,
-    AttendanceStatusId VARCHAR(20)
+SELECT * FROM attendance_report_2024_25 ORDER BY SNo DESC;
+
+CREATE TABLE fees_collection_2024_25 (
+    SNo INT ,
+    AdmissionNo VARCHAR(50) NOT NULL,
+    Name VARCHAR(255) NOT NULL,
+    Total_Fees DECIMAL(10,2) NOT NULL,
+    Total_Fee_Paid DECIMAL(10,2) NOT NULL,
+    Discount_Concession DECIMAL(10,2) DEFAULT 0.00,
+    Total_Due DECIMAL(10,2) NOT NULL
 );
 
-ALTER TABLE attendance_report1 DROP INDEX `AdmissionNo`;
-ALTER TABLE attendance_report1 ADD UNIQUE (`Date`, `AdmissionNo`);
+SELECT * FROM fees_collection_2024_25 ORDER BY SNo DESC;
+
+CREATE TABLE fee_concession_2024_25 (
+    id INT ,
+    date DATE NOT NULL,
+    student_number VARCHAR(50) NOT NULL,
+    student_name VARCHAR(255) NOT NULL,
+    discount_given DECIMAL(10,2) NOT NULL
+);
+
+DROP TABLE fee_concession_2024_25;
+
+SELECT * FROM fee_concession_2024_25;
 
 
 CREATE TABLE students (
