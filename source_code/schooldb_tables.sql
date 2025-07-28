@@ -1,79 +1,73 @@
 BEGIN;
 
--- ROLLBACK;
+rollback;
 
-
--- Drop existing tables if they exist
-DROP TABLE IF EXISTS public.attendance_report_2024_25 CASCADE;
-DROP TABLE IF EXISTS public.fees_table_2024_25 CASCADE;
-DROP TABLE IF EXISTS public.fees_collection_2024_25 CASCADE;
-DROP TABLE IF EXISTS public.fee_concession_2024_25 CASCADE;
-DROP TABLE IF EXISTS public.fees_report_2024_25 CASCADE;
-DROP TABLE IF EXISTS public.daywise_fees_collection_2024_25 CASCADE;
-DROP TABLE IF EXISTS public.students_2024_25 CASCADE;
-DROP TABLE IF EXISTS public.class_table_2024_25 CASCADE;
-
-
-
--- Recreate Tables
+-- Drop unified tables if they exist
+DROP TABLE IF EXISTS public.attendance_report CASCADE;
+DROP TABLE IF EXISTS public.fees_table CASCADE;
+DROP TABLE IF EXISTS public.fees_collection CASCADE;
+DROP TABLE IF EXISTS public.fee_concession CASCADE;
+DROP TABLE IF EXISTS public.fees_report CASCADE;
+DROP TABLE IF EXISTS public.daywise_fees_collection CASCADE;
+DROP TABLE IF EXISTS public.students CASCADE;
+DROP TABLE IF EXISTS public.class_table CASCADE;
 
 -- Class Table
-CREATE TABLE public.class_table_2024_25
-(
+CREATE TABLE public.class_table (
     classno SERIAL PRIMARY KEY,
     class VARCHAR(50),
-    classid INTEGER ,
+    classid INTEGER,
     classname VARCHAR(50),
-    branchid INTEGER ,  -- ✅ Added UNIQUE constraint
-    branchname VARCHAR(50)
+    branchid INTEGER,
+    branchname VARCHAR(50),
+    academic_year VARCHAR(10) NOT NULL
 );
 
-
-
--- Students Table
-CREATE TABLE IF NOT EXISTS public.students_2024_25
-(
-    sno SERIAL,
-    admissionno VARCHAR(20) PRIMARY KEY, -- Primary key
-    student_name VARCHAR(100) NOT NULL,
+CREATE TABLE public.students (
+    sno SERIAL PRIMARY KEY,
+    adm_no VARCHAR(20) NOT NULL,
+    name VARCHAR(100) NOT NULL,
     class VARCHAR(20),
     gender VARCHAR(10),
-    mothername VARCHAR(100),
-    fathername VARCHAR(100),
-    penno VARCHAR(50),
+    mother_name VARCHAR(100),
+    father_name VARCHAR(100),
+    pen_number VARCHAR(50),
     dob DATE,
-    mobile VARCHAR(25),
+    phone_no VARCHAR(25),
     religion VARCHAR(50),
     caste VARCHAR(50),
-    subcaste VARCHAR(50),
-    iindlang VARCHAR(50),
+    sub_caste VARCHAR(50),
+    second_lang VARCHAR(50),
     remarks TEXT,
-    classno INTEGER,
-    joinedyear INTEGER
+    class_nos INTEGER,
+    joined_year INTEGER,
+    grades VARCHAR(10),
+    academic_year VARCHAR(10) NOT NULL,
+    status VARCHAR(20),
+    is_active BOOLEAN DEFAULT TRUE,
+    UNIQUE (adm_no, academic_year)  -- ✅ No comma here
 );
 
 -- Attendance Report
-CREATE TABLE IF NOT EXISTS public.attendance_report_2024_25
-(	
-	id SERIAL,
+CREATE TABLE public.attendance_report (
+    id SERIAL,
     date DATE NOT NULL,
     admissionno VARCHAR(20) NOT NULL,
+    academic_year VARCHAR(10) NOT NULL,
     classno INTEGER NOT NULL,
     classid INTEGER NOT NULL,
     branchid INTEGER NOT NULL,
     attendancestatusid INTEGER NOT NULL,
-    PRIMARY KEY (date, admissionno), -- Composite Primary Key
-    FOREIGN KEY (admissionno) REFERENCES public.students_2024_25(admissionno) ON DELETE CASCADE,
-    FOREIGN KEY (classno) REFERENCES public.class_table_2024_25(classno) ON DELETE SET NULL
+    PRIMARY KEY (date, admissionno, academic_year),
+    FOREIGN KEY (admissionno, academic_year) REFERENCES public.students(admissionno, academic_year) ON DELETE CASCADE,
+    FOREIGN KEY (classno) REFERENCES public.class_table(classno) ON DELETE SET NULL
 );
 
-
 -- Fees Table
-CREATE TABLE IF NOT EXISTS public.fees_table_2024_25
-(
+CREATE TABLE public.fees_table (
     sno SERIAL,
-    adm_no VARCHAR(20) PRIMARY KEY, -- Primary key
     student_name VARCHAR(100),
+    adm_no VARCHAR(20),
     fb_no VARCHAR(20),
     class VARCHAR(20),
     term1 NUMERIC(10, 2) DEFAULT 0,
@@ -87,73 +81,62 @@ CREATE TABLE IF NOT EXISTS public.fees_table_2024_25
     classno INTEGER,
     totalfees NUMERIC(10, 2) GENERATED ALWAYS AS (totalfeepaid + discount_concession + totalfeedue) STORED,
     paymentstatusid INTEGER,
-    FOREIGN KEY (adm_no) REFERENCES public.students_2024_25(admissionno) ON DELETE CASCADE,
-    FOREIGN KEY (classno) REFERENCES public.class_table_2024_25(classno) ON DELETE SET NULL
+    academic_year VARCHAR(10) NOT NULL,
+    PRIMARY KEY (adm_no, academic_year),
+    FOREIGN KEY (adm_no, academic_year) REFERENCES public.students(admissionno, academic_year) ON DELETE CASCADE,
+    FOREIGN KEY (classno) REFERENCES public.class_table(classno) ON DELETE SET NULL
 );
 
 -- Fees Collection
-CREATE TABLE IF NOT EXISTS public.fees_collection_2024_25
-(
-    admissionno VARCHAR(20) PRIMARY KEY, -- Primary key
+CREATE TABLE public.fees_collection (
+    admissionno VARCHAR(20),
+    academic_year VARCHAR(10) NOT NULL,
     name VARCHAR(100) NOT NULL,
     total_fees NUMERIC(10, 2) NOT NULL DEFAULT 0,
     total_fee_paid NUMERIC(10, 2) NOT NULL DEFAULT 0,
     discount_concession NUMERIC(10, 2) NOT NULL DEFAULT 0,
     total_due NUMERIC(10, 2) NOT NULL DEFAULT 0,
-    FOREIGN KEY (admissionno) REFERENCES public.students_2024_25(admissionno) ON DELETE CASCADE
+    PRIMARY KEY (admissionno, academic_year),
+    FOREIGN KEY (admissionno, academic_year) REFERENCES public.students(admissionno, academic_year) ON DELETE CASCADE
 );
 
--- Fee Concessions
-CREATE TABLE IF NOT EXISTS public.fee_concession_2024_25
-(	
-	id	 SERIAL,
-    student_number VARCHAR(20), 
+-- Fee Concession
+CREATE TABLE public.fee_concession (
+    id SERIAL,
+    student_number VARCHAR(20),
+    academic_year VARCHAR(10) NOT NULL,
     date DATE NOT NULL,
     student_name VARCHAR(100) NOT NULL,
     discount_given NUMERIC(10, 2) NOT NULL,
-    FOREIGN KEY (student_number) REFERENCES public.students_2024_25(admissionno) ON DELETE CASCADE
+    PRIMARY KEY (student_number, date, academic_year),
+    FOREIGN KEY (student_number, academic_year) REFERENCES public.students(admissionno, academic_year) ON DELETE CASCADE
 );
 
-
--- ALTER TABLE fee_concession_2024_25 DROP CONSTRAINT fee_concession_2024_25_pkey;
-
-ALTER TABLE fee_concession_2024_25 ADD PRIMARY KEY (student_number, date);
-
-ALTER TABLE fee_concession_2024_25
-DROP CONSTRAINT IF EXISTS unique_concession_per_day;
-
--- Drop the primary key constraint from fee_concession_2024_25
-ALTER TABLE fee_concession_2024_25 DROP CONSTRAINT IF EXISTS fee_concession_2024_25_pkey;
-
 -- Fees Report
-CREATE TABLE IF NOT EXISTS public.fees_report_2024_25
-(
-    admissionno VARCHAR(20) PRIMARY KEY, -- Primary key
+CREATE TABLE public.fees_report (
+    admissionno VARCHAR(20),
+    academic_year VARCHAR(10) NOT NULL,
     name VARCHAR(100) NOT NULL,
     total_fees NUMERIC(10, 2) NOT NULL DEFAULT 0,
     total_fee_paid NUMERIC(10, 2) NOT NULL DEFAULT 0,
     discount_concession NUMERIC(10, 2) NOT NULL DEFAULT 0,
     total_due NUMERIC(10, 2) NOT NULL DEFAULT 0,
-    FOREIGN KEY (admissionno) REFERENCES public.students_2024_25(admissionno) ON DELETE CASCADE
+    PRIMARY KEY (admissionno, academic_year),
+    FOREIGN KEY (admissionno, academic_year) REFERENCES public.students(admissionno, academic_year) ON DELETE CASCADE
 );
 
 -- Daywise Fees Collection
-CREATE TABLE IF NOT EXISTS public.daywise_fees_collection_2024_25
-(
-    "AdmissionNo" TEXT , 
-    "SNo" TEXT PRIMARY KEY, -- Primary key
+CREATE TABLE public.daywise_fees_collection (
+    "AdmissionNo" TEXT,
+    academic_year VARCHAR(10) NOT NULL,
+    "SNo" TEXT,
     "RecieptNo" TEXT,
     "Class" TEXT,
     "StudentName" TEXT,
     "Date" TIMESTAMP,
     "ReceivedAmount" DOUBLE PRECISION,
-    "Remarks" TEXT
+    "Remarks" TEXT,
+    PRIMARY KEY ("SNo", academic_year)
 );
-
--- ALTER TABLE daywise_fees_collection_2024_25 ADD COLUMN id SERIAL PRIMARY KEY;
-
-
-ALTER TABLE daywise_fees_collection_2024_25 DROP CONSTRAINT daywise_fees_collection_2024_25_pkey;
-
 
 COMMIT;

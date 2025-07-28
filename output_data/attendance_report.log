@@ -6,3 +6,151 @@
 
 2025-02-10 18:09:59,654 - ERROR - \u274c Unexpected error: [Errno 22] Invalid argument: 'D:\\GITHUB\\kotak-school-dbms\\output_data\\attendance_report_2024_25.csv'
 
+2025-07-27 11:23:53,356 - ERROR - \u274c Unexpected error: name 'load_and_clean_data' is not defined
+
+2025-07-27 11:24:14,264 - ERROR - \u274c Unexpected error: load_and_clean_data() takes 1 positional argument but 3 were given
+
+2025-07-27 11:26:17,558 - ERROR - \u274c Unexpected error: load_and_clean_data() takes 1 positional argument but 3 were given
+
+2025-07-27 11:26:43,229 - ERROR - \u274c Unexpected error: 'ADM_NO'
+
+2025-07-27 11:34:05,747 - ERROR - Traceback (most recent call last):
+  File "C:\Users\harik\AppData\Local\Temp\ipykernel_8764\1713902960.py", line 20, in update_database
+    cursor.execute(f"TRUNCATE TABLE {TABLE_NAME};")  # \u2705 TRUNCATE before inserting data
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "attendance_report" does not exist
+
+
+2025-07-27 14:52:25,504 - ERROR - Traceback (most recent call last):
+  File "C:\Users\harik\AppData\Local\Temp\ipykernel_17676\1713902960.py", line 20, in update_database
+    cursor.execute(f"TRUNCATE TABLE {TABLE_NAME};")  # \u2705 TRUNCATE before inserting data
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "attendance_report" does not exist
+
+
+2025-07-27 14:54:57,399 - ERROR - Traceback (most recent call last):
+  File "C:\Users\harik\AppData\Local\Temp\ipykernel_17676\1713902960.py", line 20, in update_database
+    cursor.execute(f"TRUNCATE TABLE {TABLE_NAME};")  # \u2705 TRUNCATE before inserting data
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "attendance_report" does not exist
+
+
+2025-07-27 14:56:00,569 - ERROR - Traceback (most recent call last):
+  File "C:\Users\harik\AppData\Local\Temp\ipykernel_17676\1793038539.py", line 20, in update_database
+    cursor.execute(f"TRUNCATE TABLE {TABLE_NAME};")  # \u2705 TRUNCATE before inserting data
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "attendance_report" does not exist
+
+
+2025-07-27 14:58:40,158 - ERROR - Traceback (most recent call last):
+  File "C:\Users\harik\AppData\Local\Temp\ipykernel_17676\1793038539.py", line 20, in update_database
+    cursor.execute(f"TRUNCATE TABLE {TABLE_NAME};")  # \u2705 TRUNCATE before inserting data
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "attendance_report" does not exist
+
+
+2025-07-27 14:59:01,085 - ERROR - Traceback (most recent call last):
+  File "C:\Users\harik\AppData\Local\Temp\ipykernel_17676\3450728266.py", line 23, in update_database
+    cursor.execute(f"TRUNCATE TABLE {TABLE_NAME};")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "attendance_report" does not exist
+
+
+2025-07-27 14:59:55,310 - ERROR - \u274c Unexpected error: 'Date'
+
+2025-07-27 15:01:37,787 - ERROR - Traceback (most recent call last):
+  File "C:\Users\harik\AppData\Local\Temp\ipykernel_17676\3450728266.py", line 23, in update_database
+    cursor.execute(f"TRUNCATE TABLE {TABLE_NAME};")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "attendance_report" does not exist
+
+
+2025-07-27 15:03:42,101 - ERROR - Traceback (most recent call last):
+  File "C:\Users\harik\AppData\Local\Temp\ipykernel_17676\3450728266.py", line 23, in update_database
+    cursor.execute(f"TRUNCATE TABLE {TABLE_NAME};")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "attendance_report" does not exist
+
+
+2025-07-27 15:05:27,657 - ERROR - Traceback (most recent call last):
+  File "C:\Users\harik\AppData\Local\Temp\ipykernel_17676\1021333320.py", line 23, in update_database
+    cursor.execute(f"TRUNCATE TABLE {TABLE_NAME};")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "attendance_report" does not exist
+
+
+2025-07-27 15:07:15,352 - ERROR - Traceback (most recent call last):
+  File "C:\Users\harik\AppData\Local\Temp\ipykernel_17676\1021333320.py", line 23, in update_database
+    cursor.execute(f"TRUNCATE TABLE {TABLE_NAME};")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "attendance_report" does not exist
+
+
+2025-07-27 20:20:32,916 - ERROR - \u274c Unexpected error: Passing 'suffixes' which cause duplicate columns {'Name_x', 'Absent Days_x', 'Class_x', 'Toral Working Days_x', 'Present Days_x'} is not allowed.
+
+2025-07-27 20:21:45,360 - ERROR - Traceback (most recent call last):
+  File "C:\Users\harik\AppData\Local\Temp\ipykernel_10332\1021333320.py", line 27, in update_database
+    cursor.copy_from(f, TABLE_NAME, sep=",")  # \u2705 lowercase and unquoted
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.InvalidTextRepresentation: invalid input syntax for type integer: ""
+CONTEXT:  COPY attendance_report, line 1, column classno: ""
+
+
+2025-07-27 20:28:30,649 - ERROR - Traceback (most recent call last):
+  File "C:\Users\harik\AppData\Local\Temp\ipykernel_10332\1021333320.py", line 27, in update_database
+    cursor.copy_from(f, TABLE_NAME, sep=",")  # \u2705 lowercase and unquoted
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.BadCopyFileFormat: extra data after last expected column
+CONTEXT:  COPY attendance_report, line 1: "560371,2025-07-16,17371,,0,0,2,2025-26"
+
+
+2025-07-27 20:30:19,990 - ERROR - Traceback (most recent call last):
+  File "C:\Users\harik\AppData\Local\Temp\ipykernel_10332\1021333320.py", line 27, in update_database
+    cursor.copy_from(f, TABLE_NAME, sep=",")  # \u2705 lowercase and unquoted
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.BadCopyFileFormat: extra data after last expected column
+CONTEXT:  COPY attendance_report, line 1: "560371,2025-07-16,17371,,0,0,2,2025-26"
+
+
+2025-07-27 20:31:47,168 - ERROR - Traceback (most recent call last):
+  File "C:\Users\harik\AppData\Local\Temp\ipykernel_10332\1021333320.py", line 27, in update_database
+    cursor.copy_from(f, TABLE_NAME, sep=",")  # \u2705 lowercase and unquoted
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.InvalidTextRepresentation: invalid input syntax for type integer: ""
+CONTEXT:  COPY attendance_report, line 1, column classno: ""
+
+
+2025-07-27 20:44:58,183 - ERROR - \u274c Unexpected error: [Errno 13] Permission denied: 'D:\\GITHUB\\kotak-school-dbms\\output_data\\attendance_report.csv'
+
+2025-07-27 20:45:34,176 - ERROR - Traceback (most recent call last):
+  File "C:\Users\harik\AppData\Local\Temp\ipykernel_10332\1021333320.py", line 27, in update_database
+    cursor.copy_from(f, TABLE_NAME, sep=",")  # \u2705 lowercase and unquoted
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.InvalidTextRepresentation: invalid input syntax for type integer: ""
+CONTEXT:  COPY attendance_report, line 1, column classno: ""
+
+
+2025-07-27 21:00:19,775 - ERROR - Traceback (most recent call last):
+  File "C:\Users\harik\AppData\Local\Temp\ipykernel_10332\1021333320.py", line 27, in update_database
+    cursor.copy_from(f, TABLE_NAME, sep=",")  # \u2705 lowercase and unquoted
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.InvalidTextRepresentation: invalid input syntax for type integer: ""
+CONTEXT:  COPY attendance_report, line 1, column classno: ""
+
+
+2025-07-27 21:26:38,723 - ERROR - Traceback (most recent call last):
+  File "C:\Users\harik\AppData\Local\Temp\ipykernel_10332\1021333320.py", line 27, in update_database
+    cursor.copy_from(f, TABLE_NAME, sep=",")  # \u2705 lowercase and unquoted
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.InvalidTextRepresentation: invalid input syntax for type integer: ""
+CONTEXT:  COPY attendance_report, line 1, column classno: ""
+
+
+2025-07-27 21:35:37,256 - ERROR - Traceback (most recent call last):
+  File "C:\Users\harik\AppData\Local\Temp\ipykernel_10332\1021333320.py", line 27, in update_database
+    cursor.copy_from(f, TABLE_NAME, sep=",")  # \u2705 lowercase and unquoted
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.InvalidTextRepresentation: invalid input syntax for type integer: ""
+CONTEXT:  COPY attendance_report, line 1, column classno: ""
+
+
