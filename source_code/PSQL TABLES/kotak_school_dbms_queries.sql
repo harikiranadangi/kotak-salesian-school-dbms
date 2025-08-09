@@ -2,9 +2,10 @@ SELECT 'SELECT * FROM ' || tablename || ' LIMIT 10;'
 FROM pg_tables 
 WHERE schemaname = 'public';
 
-SELECT * FROM students WHERE academic_year = '2025-26';
+SELECT * FROM students WHERE academic_year_id = 1;
 SELECT * FROM student_list;
-DROP TABLE 
+SELECT * FROM students;
+DROP TABLE students;
 
 SELECT * FROM fees_table;
 
