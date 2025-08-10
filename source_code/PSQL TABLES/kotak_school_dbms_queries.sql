@@ -4,14 +4,17 @@ WHERE schemaname = 'public';
 
 SELECT * FROM students WHERE academic_year_id = 1;
 SELECT * FROM student_list;
+
 SELECT * FROM students;
 DROP TABLE students;
 
 SELECT * FROM fees_table;
+DROP TABLE fees_table;
 
-SELECT * FROM fees_table WHERE academic_year = '2024-25';
+SELECT * FROM fees_table WHERE academic_year_id = 2;
+DROP TABLE daywise_fees_collection;
 
-SELECT * FROM daywise_fees_collection WHERE academic_year = '2025-26';
+SELECT * FROM daywise_fees_collection WHERE academic_year = '2024-25';
 
 SELECT * FROM class_table_2024_25 ;
 
@@ -19,8 +22,11 @@ SELECT * FROM attendance_report;
 
 DELETE FROM attendance_report;
 
-SELECT * FROM fees_collection WHERE academic_year = '2024_25';
+SELECT * FROM fees_collection WHERE academic_year_id = 1;
+DROP TABLE fees_collection;
+
 SELECT * FROM fee_concession_report ;
+DROP TABLE fee_concession_report;
 
 SELECT * FROM fees_report_2024_25 ;
 
