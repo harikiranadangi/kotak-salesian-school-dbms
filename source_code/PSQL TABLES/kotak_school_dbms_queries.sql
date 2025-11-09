@@ -59,6 +59,9 @@ SELECT indexname, indexdef
 FROM pg_indexes 
 WHERE tablename = 'fee_concession_2024_25';
 
+SELECT * FROM atom_transaction_report LIMIT 10;
+DROP TABLE atom_transaction_report;
+
 
 
 
